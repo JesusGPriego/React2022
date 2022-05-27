@@ -1,0 +1,15 @@
+{
+  "prettier.jsxSingleQuote": true,
+  "markdown.preview.typographer": true,
+  "prettier.singleQuote": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "prettier.arrowParens": "avoid",
+  "prettier.quoteProps": "consistent",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.enableDebugLogs": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

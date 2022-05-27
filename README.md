@@ -11,3 +11,15 @@ This app has been developed by using component classes, and not functional compo
 ## Dogs Rolodex
 
 It is the same as Monster Rolodex, but showing other design and developed using functional components.
+
+## Crwn Shop
+
+This is the e-commerce project the course is about.
+
+In this course Ill be using:
+
+- Functional components
+- Hooks
+- routing
+- firebase integration
+- stripe payment

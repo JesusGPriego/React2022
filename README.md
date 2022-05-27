@@ -7,3 +7,7 @@ In this course I will be learning React by building an entire e-commerce app, us
 A simple app that displays cards that shows an image, and some data fetched from an api.
 
 This app has been developed by using component classes, and not functional components, and has been a good introduction to React.
+
+## Dogs Rolodex
+
+It is the same as Monster Rolodex, but showing other design and developed using functional components.

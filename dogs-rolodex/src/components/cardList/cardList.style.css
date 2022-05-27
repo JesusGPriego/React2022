@@ -1,0 +1,13 @@
+.card_list {
+  margin: 0 auto;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 10px;
+  padding-bottom: 25px;
+  background-color: rgb(84, 84, 84);
+  margin: 0 auto;
+  margin-bottom: 50px;
+}

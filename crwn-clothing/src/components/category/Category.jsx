@@ -1,5 +1,5 @@
 import './category.style.scss';
-const Category = ({ category: { title, subTitle, imageUrl } }) => (
+const Category = ({ subTitle, category: { title, imageUrl } }) => (
   <div className="category__container">
     <div
       className="background__image"

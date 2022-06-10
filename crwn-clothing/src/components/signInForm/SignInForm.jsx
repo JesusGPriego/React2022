@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import FormInput from '../formInput/FormInput';
 import './signInForm.styles.scss';
 import {
@@ -7,7 +7,6 @@ import {
   signInAuthWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
 import CustomButton from '../button/Button.jsx';
-import { UserContext } from '../../contexts/User';
 
 const defaultFormFields = {
   email: '',
@@ -17,7 +16,6 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -27,9 +25,8 @@ const SignInForm = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      const { user } = await signInAuthWithEmailAndPassword(email, password);
+      await signInAuthWithEmailAndPassword(email, password);
       resetFormFields();
-      setCurrentUser(user);
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
@@ -50,8 +47,7 @@ const SignInForm = () => {
 
   const signInWighGoogle = async () => {
     try {
-      const { user } = await signInWithGooglePopUp();
-      await createUserDocumentFromAuth(user);
+      await signInWithGooglePopUp();
     } catch (error) {
       console.log('error: popup windows has been closed before auth');
     }

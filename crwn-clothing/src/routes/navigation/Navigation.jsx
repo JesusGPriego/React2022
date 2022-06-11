@@ -10,14 +10,12 @@ import { CartContext } from '../../contexts/Cart';
 
 const NavigationBar = () => {
   const { currentUser } = useContext(UserContext);
-  const { cartState, setCartState } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const signOutHandler = async () => {
     await signOutUser();
   };
-
-  const isVisible = !cartState['visible'];
   const toggleDropDown = () => {
-    setCartState({ visible: isVisible });
+    setIsCartOpen(!isCartOpen);
   };
 
   return (
@@ -44,7 +42,7 @@ const NavigationBar = () => {
             <CartIcon />
           </span>
         </div>
-        {isVisible && <CartDropdown />}
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>

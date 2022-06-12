@@ -1,57 +1,56 @@
 import { useContext } from 'react';
+import CheckoutItem from '../../components/checkoutItem/CheckoutItem';
 import { CartContext } from '../../contexts/Cart';
-
+import './checkout.styles.scss';
 const Checkout = () => {
-  const { cartItems, addItemToCart, decreaseItemFromCart, removeItemFromCart } =
-    useContext(CartContext);
-
-  console.log(cartItems);
+  const {
+    cartItems,
+    addItemToCart,
+    decreaseItemFromCart,
+    removeItemFromCart,
+    cartTotal,
+  } = useContext(CartContext);
   const handleClick = e => {
     e.preventDefault();
     if (e.target.tagName.toLowerCase() === 'button') {
-      const id = Number(e.target.parentNode.id);
+      //   console.log(e.target.parentNode.closest('.id_giver'));
+      const id = Number(e.target.parentNode.closest('.id_giver').id);
       const whatToDo = e.target.id;
       const selectedItem = cartItems.find(cartItem => cartItem.id === id);
-      switch (whatToDo) {
-        case 'increase':
-          addItem(selectedItem);
-          break;
-        case 'decrease':
-          decreaseItem(selectedItem);
-          break;
-        case 'remove':
-          removeItem(selectedItem);
-          break;
-        default:
-          break;
-      }
+      checkoutFunctions[whatToDo](selectedItem);
     }
   };
-
-  const addItem = item => {
-    addItemToCart(item);
+  const checkoutFunctions = {
+    increase: item => {
+      addItemToCart(item);
+    },
+    decrease: item => {
+      decreaseItemFromCart(item);
+    },
+    remove: item => {
+      removeItemFromCart(item);
+    },
   };
 
-  const decreaseItem = item => {
-    decreaseItemFromCart(item);
-  };
-  const removeItem = item => {
-    removeItemFromCart(item);
-  };
+  const headers = ['Product', 'Description', 'Quantity', 'Price', 'Remove'];
 
   return (
-    <div onClick={handleClick}>
-      {cartItems.map(cartItem => (
-        <div key={cartItem.id} id={cartItem.id}>
-          <img src={cartItem.imageUrl} alt={`Image of ${cartItem.name}`} />
-          <p>{cartItem.name}</p>
-          <button id="decrease">{'<'}</button>
-          <p>{cartItem.quantity}</p>
-          <button id="increase">{'>'}</button>
-          <p>{cartItem.price * cartItem.quantity}€</p>
-          <button id="remove">{'X'}</button>
-        </div>
-      ))}
+    <div className="checkout__container">
+      <div className="checkout__header">
+        {headers.map(header => (
+          <div key={header} className="header__block">
+            <span>{header}</span>
+          </div>
+        ))}
+      </div>
+      <div className="id__container" onClick={handleClick}>
+        {cartItems.map(cartItem => (
+          <div className="id_giver" key={cartItem.id} id={cartItem.id}>
+            <CheckoutItem cartItem={cartItem} />
+          </div>
+        ))}
+      </div>
+      <span className="total">Total: {cartTotal}€</span>
     </div>
   );
 };

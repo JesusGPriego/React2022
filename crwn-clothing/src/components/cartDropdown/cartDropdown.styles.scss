@@ -10,9 +10,10 @@
   transition: all 0.5s;
 }
 .cart__dropdown__container {
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   width: 240px;
   height: 340px;
   padding: 20px;

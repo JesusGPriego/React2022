@@ -5,7 +5,7 @@ const CartItem = ({ cartItem }) => {
   return (
     <Fragment>
       <div className="cart__item__container">
-        <img src={imageUrl} alt={`image of ${name}`} />
+        <img src={imageUrl} alt={` ${name}`} />
         <div className="item__details">
           <span className="name">{`${name}, ${quantity}`}</span>
           <span className="price">{`${quantity} x 

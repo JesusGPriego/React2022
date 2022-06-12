@@ -1,30 +1,48 @@
 import { useContext } from 'react';
-import ProductCard from '../../components/productCard/ProductCard';
 import { CartContext } from '../../contexts/Cart';
-import { ProductsContext } from '../../contexts/Product';
-import './shop.styles.scss';
+import { CategoriesContext } from '../../contexts/Categories';
+import { Route, Routes } from 'react-router-dom';
+import CategoriesPreview from '../categoryPreview/CategoriesPreview';
+import Category from '../category/Category';
 
 const Shop = () => {
-  const { products } = useContext(ProductsContext);
+  const { categories } = useContext(CategoriesContext);
   const { addItemToCart } = useContext(CartContext);
-  const addItemDelegation = e => {
+
+  const handleClick = e => {
     e.preventDefault();
     if (e.target.tagName.toLowerCase() === 'button') {
-      const currentId = Number(e.target.parentNode.parentNode.id);
-      const currentItem = products.find(product => product.id === currentId);
-      addItemToCart(currentItem);
+      addItem(e);
     }
   };
 
+  const addItem = e => {
+    const currentId = Number(e.target.parentNode.closest('.id__container').id);
+
+    const clickedItemCategory = e.target.parentNode
+      .closest('.category__content')
+      .querySelector('.category__name')
+      .innerHTML.toLowerCase();
+
+    const currentCategory = categories[clickedItemCategory];
+    const currentItem = currentCategory.find(
+      product => product.id === currentId
+    );
+
+    addItemToCart(currentItem);
+  };
+
+  console.log('shop-rerender');
+
   return (
-    <div className="product__container" onClick={addItemDelegation}>
-      {products.map(product => {
-        return (
-          <div key={product.id} id={product.id}>
-            <ProductCard product={product} />;
-          </div>
-        );
-      })}
+    <div onClick={handleClick}>
+      <Routes>
+        <Route index element={<CategoriesPreview categories={categories} />} />
+        <Route
+          path=":category"
+          element={<Category categories={categories} />}
+        />
+      </Routes>
     </div>
   );
 };

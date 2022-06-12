@@ -3,9 +3,17 @@ import CartItem from '../cartItem/CartItem';
 import { Fragment, useContext } from 'react';
 import { CartContext } from '../../contexts/Cart';
 import './cartDropdown.styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 const CartDropdown = () => {
   const { cartItems, setIsCartOpen } = useContext(CartContext);
+
+  const navigate = useNavigate();
+
+  const navigateHandler = () => {
+    navigate('checkout');
+    setIsCartOpen(false);
+  };
 
   const closeCartDropdown = () => {
     setIsCartOpen(false);
@@ -22,7 +30,7 @@ const CartDropdown = () => {
           ) : (
             <span className="empty-message">Your cart is empty</span>
           )}
-          <CustomButton>Go To Checktout</CustomButton>
+          <CustomButton onClick={navigateHandler}>Go To Checktout</CustomButton>
         </div>
       </div>
       <div className="overlay" onClick={closeCartDropdown}></div>

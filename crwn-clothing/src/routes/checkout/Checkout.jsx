@@ -3,6 +3,7 @@ import CheckoutItem from '../../components/checkoutItem/CheckoutItem';
 import { CartContext } from '../../contexts/Cart';
 import {
   CheckoutContainer,
+  CheckoutHeader,
   HeaderBlock,
   ItemContainer,
   Total,

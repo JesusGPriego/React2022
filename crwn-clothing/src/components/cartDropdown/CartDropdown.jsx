@@ -2,8 +2,8 @@ import CustomButton from '../button/Button';
 import CartItem from '../cartItem/CartItem';
 import { Fragment, useContext } from 'react';
 import { CartContext } from '../../contexts/Cart';
-import './cartDropdown.styles.scss';
 import { useNavigate } from 'react-router-dom';
+import { Overlay, Container, Item, Message } from './cartDropdown.styles.jsx';
 
 const CartDropdown = () => {
   const { cartItems, setIsCartOpen } = useContext(CartContext);
@@ -21,19 +21,19 @@ const CartDropdown = () => {
 
   return (
     <Fragment>
-      <div className={`cart__dropdown__container`}>
-        <div className="cart__items">
+      <Container>
+        <Item>
           {cartItems.length ? (
             cartItems.map(cartItem => (
               <CartItem key={cartItem.id} cartItem={cartItem} />
             ))
           ) : (
-            <span className="empty-message">Your cart is empty</span>
+            <Message>Your cart is empty</Message>
           )}
           <CustomButton onClick={navigateHandler}>Go To Checktout</CustomButton>
-        </div>
-      </div>
-      <div className="overlay" onClick={closeCartDropdown}></div>
+        </Item>
+      </Container>
+      <Overlay onClick={closeCartDropdown}></Overlay>
     </Fragment>
   );
 };

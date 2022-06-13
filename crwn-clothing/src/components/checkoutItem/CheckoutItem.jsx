@@ -1,4 +1,5 @@
 import './checkoutItem.styles.scss';
+
 const CheckoutItem = ({ cartItem }) => {
   return (
     <div className="checkout__item__container">

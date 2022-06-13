@@ -18,7 +18,6 @@ const Shop = () => {
 
   const addItem = e => {
     const currentId = Number(e.target.parentNode.closest('.id__container').id);
-
     const clickedItemCategory = e.target.parentNode
       .closest('.category__content')
       .querySelector('.category__name')
@@ -31,8 +30,6 @@ const Shop = () => {
 
     addItemToCart(currentItem);
   };
-
-  console.log('shop-rerender');
 
   return (
     <div onClick={handleClick}>

@@ -21,5 +21,7 @@ In this course Ill be using:
 - Functional components
 - Hooks
 - routing
+- Context API
+- styled-components
 - firebase integration
 - stripe payment

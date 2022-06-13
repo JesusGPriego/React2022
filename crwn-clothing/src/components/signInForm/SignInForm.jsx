@@ -2,11 +2,10 @@ import { useState } from 'react';
 import FormInput from '../formInput/FormInput';
 import './signInForm.styles.scss';
 import {
-  createUserDocumentFromAuth,
   signInWithGooglePopUp,
   signInAuthWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
-import CustomButton from '../button/Button.jsx';
+import CustomButton, { BUTTON_TYPE_CLASSES } from '../button/Button.jsx';
 
 const defaultFormFields = {
   email: '',
@@ -77,9 +76,9 @@ const SignInForm = () => {
         <div className="buttons__container">
           <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton
-            onClick={signInWighGoogle}
+            buttonType={BUTTON_TYPE_CLASSES.google}
             type="button"
-            buttonType={'google'}
+            onClick={signInWighGoogle}
           >
             Google Sign In
           </CustomButton>

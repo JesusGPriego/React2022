@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import './cartItem.scss';
+import { Container, Image, Details, Name } from './cartItem.styles.jsx';
 const CartItem = ({ cartItem }) => {
   const { name, quantity, imageUrl, price } = cartItem;
   return (
     <Fragment>
-      <div className="cart__item__container">
-        <img src={imageUrl} alt={` ${name}`} />
-        <div className="item__details">
-          <span className="name">{`${name}, ${quantity}`}</span>
+      <Container>
+        <Image src={imageUrl} alt={` ${name}`} />
+        <Details>
+          <Name>{`${name}, ${quantity}`}</Name>
           <span className="price">{`${quantity} x 
           ${price}€`}</span>
-        </div>
-      </div>
+        </Details>
+      </Container>
     </Fragment>
   );
 };

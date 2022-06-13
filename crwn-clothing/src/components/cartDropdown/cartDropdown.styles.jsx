@@ -1,15 +1,17 @@
-.overlay {
+import styled from 'styled-components';
+
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   z-index: 100;
   transition: all 0.5s;
-}
-.cart__dropdown__container {
+`;
+export const Container = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -23,20 +25,20 @@
   right: 40px;
   z-index: 1000;
 
-  .empty__message {
-    font-size: 18px;
-    margin: 50px auto;
-  }
-
-  .cart__items {
-    height: 340px;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-  }
-
   button {
     margin-top: auto;
     font-size: 12px;
   }
-}
+`;
+
+export const Message = styled.div`
+  font-size: 18px;
+  margin: 50px auto;
+`;
+
+export const Item = styled.div`
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+`;
